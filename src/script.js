@@ -3,6 +3,9 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
+var PLAYER_HEIGHT = .02;
+var PLAYER_WIDTH = .01;
+
 
 // Debug
 const gui = new dat.GUI()
@@ -15,17 +18,14 @@ const scene = new THREE.Scene()
 
 
 
-
-//add our sun 
-
 //create our mesh Texture Loaders
 const loader = new THREE.TextureLoader();
 
-//load our height map her
-const heightMap = loader.load('/random_map_three.jpg')
-    //load our color map here
-    //const textureImgage = loader.load("/mtn.jpeg")
-const textureImgage = loader.load("./land_map_example.png")
+//load the field texture here
+//const fieldTexture = loader.load('/random_map_three.jpg')
+
+//load the ball texture here
+//const textureImgage = loader.load("./land_map_example.png")
 
 
 // declaring our mesh plane
@@ -44,6 +44,16 @@ const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
 const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 sphere.position.set(20, 20, 20);
+
+
+//create players
+var playerGeometery  = new THREE.BoxGeometry(PLAYER_WIDTH, PLAYER_HEIGHT),
+
+playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
+player = new THREE.Mesh(playerGeometery, playerMaterial);
+
+scene.add(player);
+
 
 scene.add(sphere);
 scene.add(mesh);
@@ -83,15 +93,29 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+
+//Set play locations
+
+//corner kick left
+//conrner kick right
+//free kick
+//throw in
+
+
+
+
 /**
  * Camera
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 50)
-camera.position.x = 0.5
-camera.position.y = 0.5
-camera.position.z = 1
+camera.position.x = 0
+camera.position.y = -50
+camera.position.z = 20
 scene.add(camera)
+
+
+// camera starting postion 0, -50, 20
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
@@ -125,6 +149,7 @@ const clock = new THREE.Clock()
 
 const tick = () => {
 
+    
     const elapsedTime = clock.getElapsedTime()
 
     // uncomment this line to rotate the terrain along the x axis

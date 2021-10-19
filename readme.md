@@ -1,10 +1,20 @@
-# Soccer Field Model
+# Virtual Soccer Field
 
-- Soccer Field Coaching Board Model built with Three.js
+- Virtual Soccer Field Model built with Three.js
 
+- Features: 
+    - virtual soccer field used to coach the game of soccer with
+    - Can create players with the drop down menu and assign them specific teams
+
+- Features in Progress:
+    - Set Plays (Corner Kicks, free kicks, throw ins)
+    - save field state
+    - 
 
 ## Setup
 ``` bash
+# ensure node and npm are installed on your machine
+
 # Install dependencies (only the first time)
 npm install
 
