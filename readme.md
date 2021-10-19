@@ -3,12 +3,12 @@
 - Virtual Soccer Field Model built with Three.js
 
 - Features: 
-    - virtual soccer field used to coach the game of soccer with
-    - Can create players with the drop down menu and assign them specific teams
+    - Virtual soccer field designed to be a coach's tool
+    - Can create players with the drop down menu and assign them specific teams, and move them around the field
 
 - Features in Progress:
     - Set Plays (Corner Kicks, free kicks, throw ins)
-    - save field state
+    - Save field state
     - 
 
 ## Setup
