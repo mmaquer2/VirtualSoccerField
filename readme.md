@@ -9,7 +9,7 @@
 - Features in Progress:
     - Set Plays (Corner Kicks, free kicks, throw ins)
     - Save field state
-    - 
+    - Player routes and movement
 
 ## Setup
 ``` bash
@@ -23,6 +23,16 @@ npm run dev
 
 # Build for production in the dist/ directory
 npm run build
+```
+
+
+## Testing
+- Jest test scripts located in ./test
+
+```
+# Run the program unit tests
+npm run test
+
 ```
 
 
