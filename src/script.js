@@ -7,36 +7,33 @@ var PLAYER_HEIGHT = .02;
 var PLAYER_WIDTH = .01;
 
 
+
 // Debug
 const gui = new dat.GUI()
 
-// Canvas
+// get canvas from markup 
 const canvas = document.querySelector('canvas.webgl')
 
 // create our three.js scene
 const scene = new THREE.Scene()
 
-
-
 //create our mesh Texture Loaders
 const loader = new THREE.TextureLoader();
 
-//load the field texture here
-//const fieldTexture = loader.load('/random_map_three.jpg')
-
-//load the ball texture here
-//const textureImgage = loader.load("./land_map_example.png")
 
 
-// declaring our mesh plane
-//const plane = new THREE.Mesh(geometry, material)
+    //load the field texture here
+    //const fieldTexture = loader.load('/random_map_three.jpg')
+
+    //load the ball texture here
+    //const textureImgage = loader.load("./land_map_example.png")
 
 const geometry = new THREE.PlaneBufferGeometry(20, 40, 40, 20);
 const material = new THREE.MeshBasicMaterial({
-    color: 0x22C717
+color: 0x22C717
 });
-const mesh = new THREE.Mesh(geometry, material);
 
+const mesh = new THREE.Mesh(geometry, material);
 
 //declaring our sphere mesh for our sun
 
@@ -45,18 +42,37 @@ const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 sphere.position.set(20, 20, 20);
 
-
-//create players
-var playerGeometery  = new THREE.BoxGeometry(PLAYER_WIDTH, PLAYER_HEIGHT),
-
-playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
-player = new THREE.Mesh(playerGeometery, playerMaterial);
-
-scene.add(player);
+//create mesh for soccer ball here
 
 
-scene.add(sphere);
-scene.add(mesh);
+
+//insert players onto the scene
+function insertPlayers() {
+
+    //for each num of blue players
+    createPlayers("blue")
+
+    //for each num of red players
+    //createPlayers("red")
+   
+    
+}
+
+//function to create new players
+function createPlayers(teamColor){
+
+    //create players
+    var playerGeometery  = new THREE.BoxGeometry(PLAYER_WIDTH, PLAYER_HEIGHT),
+    playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
+    player = new THREE.Mesh(playerGeometery, playerMaterial);
+    
+
+    scene.add(player);
+
+
+}
+
+
 
 
 // Lights
@@ -101,6 +117,27 @@ window.addEventListener('resize', () => {
 //free kick
 //throw in
 
+//change camera postion based on play selection
+function changeCamera(playType) {
+
+    if(playType = "corner_left") {
+
+    }
+
+    if(playType = "corner_right") {
+
+    }
+
+    if(playType = "free_kick_right") {
+
+    }
+
+    if(playType = "free_kick_left") {
+
+    }
+    
+
+}
 
 
 
@@ -115,7 +152,7 @@ camera.position.z = 20
 scene.add(camera)
 
 
-// camera starting postion 0, -50, 20
+
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
@@ -141,28 +178,34 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 //set the background color of our renderer 
 renderer.setClearColor(0xffff, 1)
 
-/**
- * option to Animate our scene
- */
-
+// declare a clock to animate our scene
 const clock = new THREE.Clock()
 
+//this is the event loop
 const tick = () => {
 
-    
-    const elapsedTime = clock.getElapsedTime()
+    //insert field and sun to scene
+    scene.add(sphere);
+    scene.add(mesh);
 
-    // uncomment this line to rotate the terrain along the x axis
-    //plane.rotation.z = .5 * elapsedTime
+     //insert meshes to scene
+     insertPlayers();
+   
+
+    const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls
     controls.update()
 
-    // Render
+    //render scene and camera
     renderer.render(scene, camera)
 
-    // Call tick again on the next frame
+    // Call tick again to move to the next frame
     window.requestAnimationFrame(tick)
 }
 
-tick()
+tick();
+
+
+
+
