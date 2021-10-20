@@ -3,6 +3,10 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
+
+var FieldState = require( "../Include/FieldState")
+
+//Set Geometery for player model height and width
 var PLAYER_HEIGHT = .02;
 var PLAYER_WIDTH = .01;
 
@@ -20,13 +24,11 @@ const scene = new THREE.Scene()
 //create our mesh Texture Loaders
 const loader = new THREE.TextureLoader();
 
+//load the field texture here
+//const fieldTexture = loader.load('/random_map_three.jpg')
 
-
-    //load the field texture here
-    //const fieldTexture = loader.load('/random_map_three.jpg')
-
-    //load the ball texture here
-    //const textureImgage = loader.load("./land_map_example.png")
+//load the soccer ball texture here
+//const textureImgage = loader.load("./land_map_example.png")
 
 const geometry = new THREE.PlaneBufferGeometry(20, 40, 40, 20);
 const material = new THREE.MeshBasicMaterial({
@@ -36,7 +38,6 @@ color: 0x22C717
 const mesh = new THREE.Mesh(geometry, material);
 
 //declaring our sphere mesh for our sun
-
 const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
 const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
@@ -44,6 +45,7 @@ sphere.position.set(20, 20, 20);
 
 //create mesh for soccer ball here
 
+//const sphereGeometery ...
 
 
 //insert players onto the scene

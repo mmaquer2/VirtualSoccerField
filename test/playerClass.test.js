@@ -1,19 +1,26 @@
 
 
-const playerClassInput = require('./Include/Player')
+const Player = require('../Include/Player')
 
-// verify 
+// verify constructor init
 test('Creating player instance' , () => {
-
+    
+   // myPlayer = new Player();
     //expect statemetn here
 
 })
 
-//verify color red
+//test insert player
 
 
-//verify color blue
+//test remove player
 
 
-//verify locations
+//test block adding player after 11 team size
+
+
+//test block removing player after 0 team size
+
+
+//test
 

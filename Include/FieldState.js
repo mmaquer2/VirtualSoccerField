@@ -10,24 +10,34 @@ class FieldState {
     constructor(){
 
         console.log("creating field state object")
+        
         var redTeamPlayers;
         var blueTeamPlayers;
 
         let blueTeam = new Team();
         let redTeam = new Team();
 
-        var playerCount;
+        var fieldPlayerCount;
         
 
     }
 
 
-    addPlayer(team,position){
-        ++playerCount;
+   teamAddPlayer() {
 
-        //playerCount to string =
 
-    } 
+
+   }
+
+   teamRemovePlayer() {
+
+
+   }
+
+   teamAdjustFormation() {
+
+
+   }
 
 
 }
@@ -35,10 +45,7 @@ class FieldState {
 //test field constructor 
 function TestField() {
 
-
     let myField = new FieldState();
-
-   
 
 }
 

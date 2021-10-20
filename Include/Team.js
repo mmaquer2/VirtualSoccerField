@@ -1,5 +1,7 @@
 'use strict';
 
+//Declartions for team formations
+
 var FOUR_FOUR_TWO = 0
 
 var THREE_FIVE_TWO = 0;
@@ -12,11 +14,10 @@ module.exports = class Team {
 
         var playerList = [];
         var teamPlayerCount = 0;
-        
-        console.log("Created a new team")
-
         var formation = "";
         var playerList = [];
+
+        console.log("Created a new team")
     }
 
     //function to add player to team
