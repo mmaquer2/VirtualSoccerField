@@ -1,12 +1,17 @@
+
+
+//import Three.js modules and style sheets from HTML
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as dat from 'dat.gui'
 
-//To Do
+// Import our classes
+
 //this is causing an error: the field wont load if this is uncommented
 //var FieldState = require( "../Include/FieldState")
+
 
 //Set Geometery for player model height and width
 var PLAYER_HEIGHT = .02;
@@ -24,13 +29,13 @@ const scene = new THREE.Scene()
 //create our mesh Texture Loaders
 const loader = new THREE.TextureLoader();
 
-//load the field texture here
+//load the field texture 
 //const fieldTexture = loader.load('/random_map_three.jpg')
 
-//load the soccer ball texture here
+//load the soccer ball texture 
 //const textureImgage = loader.load("./land_map_example.png")
 
-const geometry = new THREE.PlaneBufferGeometry(20, 40, 40, 20);
+const geometry = new THREE.PlaneBufferGeometry(30, 40, 40, 30);
 const material = new THREE.MeshBasicMaterial({
 color: 0x22C717
 });
@@ -44,50 +49,25 @@ const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 sphere.position.set(20, 20, 20);
 
 //create mesh for soccer ball here
-
 //const sphereGeometery ...
-
-
-//insert players onto the scene
-function insertPlayers() {
-
-    //for each num of blue players
-    createPlayers("blue")
-
-    //for each num of red players
-    //createPlayers("red")
-   
-    
-}
-
-//function to create new players
-function createPlayers(teamColor){
-
-    //create players
-    var playerGeometery  = new THREE.BoxGeometry(PLAYER_WIDTH, PLAYER_HEIGHT),
-    playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
-    player = new THREE.Mesh(playerGeometery, playerMaterial);
-    
-    scene.add(player);
-
-}
+const ballGeometry = new THREE.SphereGeometry(1, 7, 7);
+const ballMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF });
+const soccerBall = new THREE.Mesh(ballGeometry, ballMaterial);
+soccerBall.position.set(1,1,1);
 
 
 // Lights
-
 const pointLight = new THREE.PointLight(0xffffff, 0.9)
 pointLight.position.x = 2
 pointLight.position.y = 3
 pointLight.position.z = 4
 scene.add(pointLight)
 
-const amblight = new THREE.AmbientLight(0x404040); // soft white light
+//soft white light from the sun mesh object
+const amblight = new THREE.AmbientLight(0x404040); 
 scene.add(amblight);
 
-
-/**
- * Sizes
- */
+//set size of the window viewport
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
@@ -155,17 +135,22 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 //set the background color of our renderer 
 renderer.setClearColor(0xffff, 1)
 
+//set a renderer dom element for draggable objects 
+//document.body.appendChild(renderer.domElement)
+
 // declare a clock to animate our scene
 const clock = new THREE.Clock()
-
 
 
 //function to handle key press during the scene
 function onDocumentKeyDown(event) {
     //console.log("key pressed")
     //alert("key pressed")
+   
+    //if 
 
-    //keypress to open the menu
+    //keypress to open the main menu
+    //key press
 
     //key press to quit
 
@@ -173,24 +158,51 @@ function onDocumentKeyDown(event) {
 
 }
 
-//button for the menu
+//button handler for the main menu
 const main_menu_button = document.querySelector('#main_menu');
     main_menu_button.addEventListener('click', () => {
         alert("main menu button pressed")
 
 });
 
-//button for the camera menu 
+//button handler for the camera menu 
 const camera_button = document.querySelector('#camera_menu');
     camera_button.addEventListener('click', () => {
         alert("camera menu button pressed")
         //some html markup show/hide/or display?
 
+
 });
 
 
 
+//buton handler for the red team menu
+const blue_button = document.querySelector('#blue_menu');
+    blue_button.addEventListener('click', () => {
+        alert("blue menu button pressed")
 
+        //some html markup show/hide/or display?
+
+});
+
+//buton handler for the red team menu
+const red_button = document.querySelector('#red_menu');
+    red_button.addEventListener('click', () => {
+        alert("red menu button pressed")
+
+        //some html markup show/hide/or display?
+
+});
+
+//drag controls for soccer ball
+//const dragControls = new DragControls(soccerBall, camera, renderer.domElement)
+
+// controls.addEventListener('dragstart', function (event) {
+//     event.object.material.opacity = 0.33
+// })
+// controls.addEventListener('dragend', function (event) {
+//     event.object.material.opacity = 1
+// })
 
 
 //this is the event loop
@@ -200,17 +212,12 @@ const tick = () => {
     //insert field and sun to scene
     scene.add(sphere);
     scene.add(mesh);
-
-     //insert meshes to scene
-    //insertPlayers();
-
-    //add evet listenr to keybaord presses
-    
-    
+    scene.add(soccerBall)
+ 
     const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls
-    controls.update()
+    //controls.update()
 
     //render scene and camera
     renderer.render(scene, camera)

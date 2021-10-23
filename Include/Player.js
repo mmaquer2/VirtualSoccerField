@@ -56,12 +56,18 @@ module.exports = class Player {
     //get the player number of the athlete-player object instance
     getPlayerNumber(){
 
-        console.log(this.playerNumber);
+        //console.log(this.playerNumber);
 
         return this.playerNumber;
 
 
     }
+      //create players
+      //var playerGeometery  = new THREE.BoxGeometry(PLAYER_WIDTH, PLAYER_HEIGHT),
+      //playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
+      //player = new THREE.Mesh(playerGeometery, playerMaterial);
+      
+      //scene.add(player);
 
 
 

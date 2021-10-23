@@ -42,4 +42,24 @@ body
     cursor: pointer;
   }
 
-  
+  #blue_menu {
+    position: absolute;
+    left: 200px;
+    top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
+  #red_menu {
+    position: absolute;
+    left: 300px;
+    top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
