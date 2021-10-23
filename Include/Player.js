@@ -1,10 +1,12 @@
 module.exports = class Player {
 
-    constructor(teamColor, position, x , y ,z) {
+    // Player class construction
+    constructor(playerNumber, teamColor, position, x , y ,z) {
+        this.playerNumber = playerNumber;
 
         //valdiate Player input
         if( teamColor != "red" || teamColor != "blue") {
-           // throw("Invalid Team color")
+           //throw("Invalid Team color")
         }
 
         //validate Player field position
@@ -13,21 +15,45 @@ module.exports = class Player {
 
         }
 
+        //validate player number
+        if (playerNumber < 0 ) {
+            alert("invalid player number entered: cannot be less than zero");  
+            throw("invalid player number entered: cannot be less than zero");
+        }
         
+        //validate player location
+        if ( typeof(x) != "number" || typeof(y) != "number" || typeof(z) != "number"){
+
+            throw("invalid player location attempted")
+
+        }
+
+        //set player location on the field
+        //setLocation()
+
+    
+
+    }
+
+    //set the location of the athlete
+    setLocation(x , y , z) {
 
 
 
     }
 
-    setTeam(){
+    //change the location of the athlete-player object instance
+    changeLocation(){
 
 
-        
+
     }
 
+    //get the player number of the athlete-player object instance
+    getPlayerNumber(){
 
-    setLocation() {
-
+        console.log(this.playerNumber);
+        return this.playerNumber;
 
 
     }

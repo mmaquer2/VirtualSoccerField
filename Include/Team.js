@@ -21,11 +21,22 @@ module.exports = class Team {
     }
 
     //function to add player to team
-    addPlayer(team, postion) {
+    addPlayer(team, postion, playerNumber) {
 
+        //use three.js state to get coordinates for player location upon creation
+        const x = 0;
+        const y = 0;
+        const z = 0;
+        
         if(playerList.length() != 11) {
 
-            Player.addPlayer(playernum,team,postion);    
+            //create a new player-athlete class
+            let newAthlete = new Player(playerNumber, team, postion, x, y ,z);
+            //insert the player to the new list
+            playerList.append(newAthlete);
+
+            
+
         }
 
         else {
@@ -37,11 +48,13 @@ module.exports = class Team {
         
     }
 
-    removePlayer() {
+    
+
+    removePlayer(playerNum) {
 
         if(playerList.length() != 0) {
 
-            Player.removePlayer(playerNum);
+            playerList.remove(playerNum)
           
         }
 
