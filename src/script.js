@@ -4,7 +4,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as dat from 'dat.gui'
 
-
+//To Do
+//this is causing an error: the field wont load if this is uncommented
 //var FieldState = require( "../Include/FieldState")
 
 //Set Geometery for player model height and width
@@ -72,8 +73,6 @@ function createPlayers(teamColor){
 }
 
 
-
-
 // Lights
 
 const pointLight = new THREE.PointLight(0xffffff, 0.9)
@@ -117,26 +116,7 @@ window.addEventListener('resize', () => {
 //throw in
 
 //change camera postion based on play selection
-function changeCamera(playType) {
 
-    if(playType = "corner_left") {
-
-    }
-
-    if(playType = "corner_right") {
-
-    }
-
-    if(playType = "free_kick_right") {
-
-    }
-
-    if(playType = "free_kick_left") {
-
-    }
-    
-
-}
 
 
 
@@ -149,8 +129,6 @@ camera.position.x = 0
 camera.position.y = -50
 camera.position.z = 20
 scene.add(camera)
-
-
 
 
 // Controls
@@ -180,9 +158,12 @@ renderer.setClearColor(0xffff, 1)
 // declare a clock to animate our scene
 const clock = new THREE.Clock()
 
+
+
 //function to handle key press during the scene
 function onDocumentKeyDown(event) {
     //console.log("key pressed")
+    //alert("key pressed")
 
     //keypress to open the menu
 
@@ -192,10 +173,29 @@ function onDocumentKeyDown(event) {
 
 }
 
+//button for the menu
+const main_menu_button = document.querySelector('#main_menu');
+    main_menu_button.addEventListener('click', () => {
+        alert("main menu button pressed")
+
+});
+
+//button for the camera menu 
+const camera_button = document.querySelector('#camera_menu');
+    camera_button.addEventListener('click', () => {
+        alert("camera menu button pressed")
+        //some html markup show/hide/or display?
+
+});
+
+
+
+
 
 
 //this is the event loop
 const tick = () => {
+    document.addEventListener("keydown", onDocumentKeyDown, false);
 
     //insert field and sun to scene
     scene.add(sphere);
@@ -205,7 +205,7 @@ const tick = () => {
     //insertPlayers();
 
     //add evet listenr to keybaord presses
-    document.addEventListener("keydown", onDocumentKeyDown, false);
+    
     
     const elapsedTime = clock.getElapsedTime()
 

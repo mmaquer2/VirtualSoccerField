@@ -78,6 +78,13 @@ module.exports = class Team {
 
     }
 
+     //function to adjust team formations
+     setFormation() {
+
+
+
+    }
+
     //function to adjust team formations
     adjustFormation() {
 
