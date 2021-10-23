@@ -2,6 +2,7 @@
 //import team and player classes from include
 
 var Team = require( "../Include/Team")
+var Player =  require("../Include/Player")
 
 //class to handle the state of the game during the animation loop
 class FieldState {
@@ -46,6 +47,7 @@ class FieldState {
 function TestField() {
 
     let myField = new FieldState();
+    let myAthlete = new Player(-1, "red", "for", 1,2,4);
 
 }
 

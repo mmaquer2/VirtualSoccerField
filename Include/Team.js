@@ -30,6 +30,10 @@ module.exports = class Team {
         
         if(playerList.length() != 11) {
 
+            //check if an athelte already has the number on the team
+
+            
+
             //create a new player-athlete class
             let newAthlete = new Player(playerNumber, team, postion, x, y ,z);
             //insert the player to the new list
@@ -48,7 +52,7 @@ module.exports = class Team {
         
     }
 
-    
+
 
     removePlayer(playerNum) {
 
