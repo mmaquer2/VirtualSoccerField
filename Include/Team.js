@@ -29,6 +29,8 @@ module.exports = class Team {
         const x = 0;
         const y = 0;
         const z = 0;
+
+        const vecLoc = new THREE.Vector3( x, y, z );
         
         if(playerList.length() != 11) {
 
@@ -37,7 +39,7 @@ module.exports = class Team {
 
 
             //create a new player-athlete class
-            let newAthlete = new Player(playerNumber, team, postion, x, y ,z);
+            let newAthlete = new Player(playerNumber, team, postion, vecLoc);
             //insert the player to the new list
             playerList.append(newAthlete);
 

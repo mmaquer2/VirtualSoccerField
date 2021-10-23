@@ -1,7 +1,7 @@
 module.exports = class Player {
 
     // Player class construction
-    constructor(playerNumber, teamColor, position, x , y ,z) {
+    constructor(playerNumber, teamColor, position, vectorLocation) {
 
         //delcare class variables
         this.playerNumber = playerNumber;
@@ -26,14 +26,6 @@ module.exports = class Player {
         if (position != "def" && position != "mid" && position != "for" ) {
             throw new Error("Invalid Field Position")
             
-        }
-
-        //validate player location
-        if ( typeof(x) != "number" || typeof(y) != "number" || typeof(z) != "number"){
-
-            throw new Error ("invalid player location attempted")
-            
-
         }
 
         //set player location on the field
