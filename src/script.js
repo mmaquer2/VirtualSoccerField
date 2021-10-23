@@ -1,4 +1,8 @@
 
+// Import our classes
+
+
+import * as Field from '../Include/FieldState'
 
 //import Three.js modules and style sheets from HTML
 import './style.css'
@@ -7,10 +11,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as dat from 'dat.gui'
 
-// Import our classes
 
-//this is causing an error: the field wont load if this is uncommented
-//var FieldState = require( "../Include/FieldState")
+
 
 
 //Set Geometery for player model height and width
@@ -139,6 +141,11 @@ function onDocumentKeyDown(event) {
 
 }
 
+//create an instance for our field
+const myField = new Field();
+
+//call function to launch field inital settings
+myField.initField();
 
 
 //button handler for the camera menu 
@@ -146,10 +153,7 @@ const camera_button = document.querySelector('#camera_menu');
     camera_button.addEventListener('click', () => {
         alert("camera menu button pressed")
     
-
-
 });
-
 
 
 //buton handler for the red team menu
