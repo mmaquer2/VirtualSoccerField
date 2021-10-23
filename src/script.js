@@ -88,21 +88,6 @@ window.addEventListener('resize', () => {
 })
 
 
-//Set play locations
-
-//corner kick left
-//conrner kick right
-//free kick
-//throw in
-
-//change camera postion based on play selection
-
-
-
-
-/**
- * Camera
- */
 // Base camera
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 50)
 camera.position.x = 0
@@ -111,7 +96,7 @@ camera.position.z = 20
 scene.add(camera)
 
 
-// Controls
+// Controls for the orbital view 
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
 controls.keys = {
@@ -120,7 +105,6 @@ controls.keys = {
     RIGHT: 'ArrowRight', // right arrow
     BOTTOM: 'ArrowDown' // down arrow
 }
-
 
 
 // Call Three Js Web GL Renderer 
@@ -138,7 +122,7 @@ renderer.setClearColor(0xffff, 1)
 //set a renderer dom element for draggable objects 
 //document.body.appendChild(renderer.domElement)
 
-// declare a clock to animate our scene
+//declare a clock to animate our scene
 const clock = new THREE.Clock()
 
 
@@ -147,29 +131,21 @@ function onDocumentKeyDown(event) {
     //console.log("key pressed")
     //alert("key pressed")
    
-    //if 
+    //keypress "r" to open red team menu
 
-    //keypress to open the main menu
-    //key press
+    //keypress "b" to open blue team menu
 
-    //key press to quit
-
-    //
+    //keypress "q" to quit program
 
 }
 
-//button handler for the main menu
-const main_menu_button = document.querySelector('#main_menu');
-    main_menu_button.addEventListener('click', () => {
-        alert("main menu button pressed")
 
-});
 
 //button handler for the camera menu 
 const camera_button = document.querySelector('#camera_menu');
     camera_button.addEventListener('click', () => {
         alert("camera menu button pressed")
-        //some html markup show/hide/or display?
+    
 
 
 });
@@ -178,23 +154,55 @@ const camera_button = document.querySelector('#camera_menu');
 
 //buton handler for the red team menu
 const blue_button = document.querySelector('#blue_menu');
+    //display blue team menu when button is clicked
     blue_button.addEventListener('click', () => {
-        alert("blue menu button pressed")
-
-        //some html markup show/hide/or display?
+        //alert("blue menu button pressed")
+        
+        document.getElementById("blue_team").classList.toggle("show");
+      
 
 });
 
 //buton handler for the red team menu
 const red_button = document.querySelector('#red_menu');
+    //display red team menu when button is clicked
     red_button.addEventListener('click', () => {
-        alert("red menu button pressed")
-
-        //some html markup show/hide/or display?
+        //alert("red menu button pressed")
+        document.getElementById("red_team").classList.toggle("show");
 
 });
 
-//drag controls for soccer ball
+  // open/close blue team content menu on click
+  window.onclick = function(event) {
+    if (!event.target.matches('.blue')) {
+      var dropdowns = document.getElementsByClassName("blue_content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+    // open/close red team content menu onclick
+    window.onclick = function(event) {
+        if (!event.target.matches('.red')) {
+          var dropdowns = document.getElementsByClassName("red_content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+    
+
+
+//controls for soccer ball
 //const dragControls = new DragControls(soccerBall, camera, renderer.domElement)
 
 // controls.addEventListener('dragstart', function (event) {
