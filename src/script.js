@@ -4,13 +4,11 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
 
-var FieldState = require( "../Include/FieldState")
+//var FieldState = require( "../Include/FieldState")
 
 //Set Geometery for player model height and width
 var PLAYER_HEIGHT = .02;
 var PLAYER_WIDTH = .01;
-
-
 
 // Debug
 const gui = new dat.GUI()
@@ -68,9 +66,7 @@ function createPlayers(teamColor){
     playerMaterial = new THREE.MeshLambertMaterial({ color: 0xCCCCCC }),
     player = new THREE.Mesh(playerGeometery, playerMaterial);
     
-
     scene.add(player);
-
 
 }
 
@@ -183,6 +179,20 @@ renderer.setClearColor(0xffff, 1)
 // declare a clock to animate our scene
 const clock = new THREE.Clock()
 
+//function to handle key press during the scene
+function onDocumentKeyDown(event) {
+    //console.log("key pressed")
+
+    //keypress to open the menu
+
+    //key press to quit
+
+    //
+
+}
+
+
+
 //this is the event loop
 const tick = () => {
 
@@ -191,9 +201,11 @@ const tick = () => {
     scene.add(mesh);
 
      //insert meshes to scene
-     insertPlayers();
-   
+    //insertPlayers();
 
+    //add evet listenr to keybaord presses
+    document.addEventListener("keydown", onDocumentKeyDown, false);
+    
     const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls

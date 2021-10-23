@@ -46,7 +46,6 @@ module.exports = class Player {
     //set the location of the athlete
     setLocation(x , y , z) {
 
-
         return true;
     }
 

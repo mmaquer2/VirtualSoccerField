@@ -18,6 +18,8 @@ module.exports = class Team {
         var playerList = [];
 
         console.log("Created a new team")
+
+        return true;
     }
 
     //function to add player to team
@@ -32,7 +34,7 @@ module.exports = class Team {
 
             //check if an athelte already has the number on the team
 
-            
+
 
             //create a new player-athlete class
             let newAthlete = new Player(playerNumber, team, postion, x, y ,z);

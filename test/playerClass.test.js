@@ -53,12 +53,7 @@ test('Catch Invalid Team' , () => {
         const myAthlete = new Player(1, "red", "hero", 1,1,1 )
     };
     
-    
     expect(t).toThrow("Invalid Field Position");
 
 })
-
-
-
-
 
