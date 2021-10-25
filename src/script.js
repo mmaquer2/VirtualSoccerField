@@ -1,19 +1,17 @@
 
-// Import our classes
-
 //import the FieldState class 
 import * as Field from '../Include/FieldState'
-
 //import Three.js modules and style sheets from HTML
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-//import * as dat from 'dat.gui'
+import * as dat from 'dat.gui'
+
 
 
 // Debug gui handler
-//const gui = new dat.GUI()
+const gui = new dat.GUI()
 
 // get canvas from index.html
 const canvas = document.querySelector('canvas.webgl')
@@ -27,18 +25,28 @@ const loader = new THREE.TextureLoader();
 //load the field texture 
 //const fieldTexture = loader.load('/random_map_three.jpg')
 
-//load the soccer ball texture 
-//const textureImgage = loader.load("./land_map_example.png")
+//load the field texture 
+const textureImgage = loader.load("soccer.png")
 
-const geometry = new THREE.PlaneBufferGeometry(30, 40, 40, 30);
+
+
+const geometry = new THREE.PlaneBufferGeometry(70, 40, 40, 30);
 const material = new THREE.MeshBasicMaterial({
-color: 0x22C717
+  color: "green",
+  //insert the texture map for the field color
+  //map: textureImgage
 });
 const fieldMesh = new THREE.Mesh(geometry, material);
 
 //declaring our sphere mesh for our sun
 const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
-const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+const sphereMaterial = new THREE.MeshBasicMaterial({ 
+  color: 0xffff00,
+  
+  //soccer ball material here
+  //map: "soccer_ball.png"
+
+});
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
 sphere.position.set(20, 20, 20);
 
@@ -49,10 +57,18 @@ const ballMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF });
 const soccerBall = new THREE.Mesh(ballGeometry, ballMaterial);
 soccerBall.position.set(1,1,1);
 
+//create a player mesh
 const playerGeometery = new THREE.SphereGeometry(1, 5, 5);
 const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
-const playerMesh = new THREE.Mesh(playerGeometery,playerMaterial);
-playerMesh.position.set(1,5,1)
+const blueMesh = new THREE.Mesh(playerGeometery,playerMaterial);
+blueMesh.position.set(1,5,1)
+
+// cloning the player mesh 
+var blueTwo = blueMesh.clone();
+blueTwo.position.set(-5,10,1)
+
+var blueThree = blueTwo.clone();
+blueThree.position.set(-10,10,1)
 
 //Goal/net One
 
@@ -165,10 +181,11 @@ function rotateCamera() {
     //alert("3rd camera view")
     camera.position.x = -50;
     camera.position.y = -10;
+
+    //reset the camera back to the original position
     cameraCounter = 0;
     return;
   }
-
 
 }
 
@@ -280,7 +297,9 @@ const tick = () => {
     scene.add(soccerBall)
 
     //test insert player to scene
-    scene.add(playerMesh)
+    scene.add(blueMesh)
+    scene.add(blueTwo)
+    scene.add(blueThree);
  
     const elapsedTime = clock.getElapsedTime()
 
