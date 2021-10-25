@@ -14,7 +14,8 @@ module.exports = class FieldState {
     //constructor function
     constructor(){
 
-        console.log("creating field state object")
+
+        //console.log("creating field state object")
         
         var redTeamPlayers;
         var blueTeamPlayers;
@@ -37,16 +38,15 @@ module.exports = class FieldState {
     //function to set the inital default settings for the soccer field
     //both red and blue teams have 11 players, in a 4-4-2 formation 
     initField(){
+
         console.log("Setting field for default settings...")
-        alert("setting field default settings..")
-        
-        //add players red team 4-4-2 formation
-
+        //alert("setting field default settings..")
+    
+        //blueTeam.fourFourTwo();
+    
         //set red team player count to 11
+        //redTeam.fourFourTwo();
 
-        //add players for blue team 4-4-2 formation
-
-        //set blue team player count to 11
 
     }
 
@@ -54,10 +54,18 @@ module.exports = class FieldState {
     changeCamera(playType) {
 
         if(playType = "corner_left") {
-    
+            
+            //camera.position.x = ..
+            //camera.position.y = ..
+            //camera.position.z = ..
+
         }
     
         if(playType = "corner_right") {
+
+            //camera.position.x = ..
+            //camera.position.y = ..
+            //camera.position.z = ..
     
         }
     

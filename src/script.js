@@ -1,7 +1,7 @@
 
 // Import our classes
 
-
+//import the FieldState class 
 import * as Field from '../Include/FieldState'
 
 //import Three.js modules and style sheets from HTML
@@ -9,20 +9,13 @@ import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import * as dat from 'dat.gui'
+//import * as dat from 'dat.gui'
 
 
+// Debug gui handler
+//const gui = new dat.GUI()
 
-
-
-//Set Geometery for player model height and width
-var PLAYER_HEIGHT = .02;
-var PLAYER_WIDTH = .01;
-
-// Debug
-const gui = new dat.GUI()
-
-// get canvas from markup 
+// get canvas from index.html
 const canvas = document.querySelector('canvas.webgl')
 
 // create our three.js scene
@@ -41,8 +34,7 @@ const geometry = new THREE.PlaneBufferGeometry(30, 40, 40, 30);
 const material = new THREE.MeshBasicMaterial({
 color: 0x22C717
 });
-
-const mesh = new THREE.Mesh(geometry, material);
+const fieldMesh = new THREE.Mesh(geometry, material);
 
 //declaring our sphere mesh for our sun
 const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
@@ -56,6 +48,16 @@ const ballGeometry = new THREE.SphereGeometry(1, 7, 7);
 const ballMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF });
 const soccerBall = new THREE.Mesh(ballGeometry, ballMaterial);
 soccerBall.position.set(1,1,1);
+
+const playerGeometery = new THREE.SphereGeometry(1, 5, 5);
+const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
+const playerMesh = new THREE.Mesh(playerGeometery,playerMaterial);
+playerMesh.position.set(1,5,1)
+
+//Goal/net One
+
+
+//Goal/net Two
 
 
 // Lights
@@ -91,22 +93,11 @@ window.addEventListener('resize', () => {
 
 
 // Base camera
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 50)
+const camera = new THREE.PerspectiveCamera(90, sizes.width / sizes.height, 0.1, 40)
 camera.position.x = 0
-camera.position.y = -50
-camera.position.z = 20
+camera.position.y = -20
+camera.position.z = 10
 scene.add(camera)
-
-
-// Controls for the orbital view 
-const controls = new OrbitControls(camera, canvas)
-controls.enableDamping = true
-controls.keys = {
-    LEFT: 'ArrowLeft', //left arrow
-    UP: 'ArrowUp', // up arrow
-    RIGHT: 'ArrowRight', // right arrow
-    BOTTOM: 'ArrowDown' // down arrow
-}
 
 
 // Call Three Js Web GL Renderer 
@@ -114,12 +105,27 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 
+
 //set the height and width of our canvas on the web browser
 renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))
 
 //set the background color of our renderer 
 renderer.setClearColor(0xffff, 1)
+
+document.body.appendChild( renderer.domElement );
+
+// Controls for the orbital view 
+const controls = new OrbitControls(camera, renderer.domElement )
+
+controls.keys = {
+	LEFT: 'ArrowLeft', //left arrow
+	UP: 'ArrowUp', // up arrow
+	RIGHT: 'ArrowRight', // right arrow
+	BOTTOM: 'ArrowDown' // down arrow
+}
+
+
 
 //set a renderer dom element for draggable objects 
 //document.body.appendChild(renderer.domElement)
@@ -127,17 +133,72 @@ renderer.setClearColor(0xffff, 1)
 //declare a clock to animate our scene
 const clock = new THREE.Clock()
 
+//function to rotate the camera based on key press "C"
+var cameraCounter = 0
+function rotateCamera() {
+
+  if(cameraCounter == 0) {
+    camera.position.x = 1;
+    camera.position.y = 1;
+    cameraCounter = cameraCounter + 1;
+    return;
+
+  }
+  
+  if(cameraCounter == 1) {
+   // alert("second camera view")
+    camera.position.x = 5;
+    camera.position.y = 5;
+    ++cameraCounter;
+    return;
+  }
+   
+  if(cameraCounter == 2) {
+    //alert("3rd camera view")
+    camera.position.x = -10;
+    camera.position.y = -10;
+    ++cameraCounter;
+    return;
+  }
+
+  if(cameraCounter == 3) {
+    //alert("3rd camera view")
+    camera.position.x = -50;
+    camera.position.y = -10;
+    cameraCounter = 0;
+    return;
+  }
+
+
+}
+
 
 //function to handle key press during the scene
 function onDocumentKeyDown(event) {
-    //console.log("key pressed")
-    //alert("key pressed")
+    
+    //variable to catch key press event handler 
+    var keyCode = event.which;
    
-    //keypress "r" to open red team menu
+    //keypress "R" to open red team menu
+    if(keyCode == 82) {
 
-    //keypress "b" to open blue team menu
+    }
 
-    //keypress "q" to quit program
+    //keypress "B" to open blue team menu
+    if(keyCode == 66) {
+      
+
+    }
+
+    //keypress "C" rotate camera position
+    if(keyCode == 67) {
+      rotateCamera();
+    }
+
+    //keypress "ESC" to restart program
+    if(keyCode == 27) {
+      
+    }
 
 }
 
@@ -148,20 +209,12 @@ const myField = new Field();
 myField.initField();
 
 
-//button handler for the camera menu 
-const camera_button = document.querySelector('#camera_menu');
-    camera_button.addEventListener('click', () => {
-        alert("camera menu button pressed")
-    
-});
-
 
 //buton handler for the red team menu
 const blue_button = document.querySelector('#blue_menu');
     //display blue team menu when button is clicked
     blue_button.addEventListener('click', () => {
         //alert("blue menu button pressed")
-        
         document.getElementById("blue_team").classList.toggle("show");
       
 
@@ -221,15 +274,28 @@ const red_button = document.querySelector('#red_menu');
 const tick = () => {
     document.addEventListener("keydown", onDocumentKeyDown, false);
 
-    //insert field and sun to scene
+    //insert field, sun, and soccer ball to the scene
     scene.add(sphere);
-    scene.add(mesh);
+    scene.add(fieldMesh);
     scene.add(soccerBall)
+
+    //test insert player to scene
+    scene.add(playerMesh)
  
     const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls
-    //controls.update()
+    controls.update()
+
+
+    //test to get/ change the postion of the soccer ball
+    var x = soccerBall.position.x
+    var y = soccerBall.position.y;
+    var z = soccerBall.position.z;
+
+    soccerBall.position.x = 10;
+    soccerBall.position.y = 20
+    //soccerBall.position.z;
 
     //render scene and camera
     renderer.render(scene, camera)
