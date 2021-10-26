@@ -47,7 +47,7 @@ const sphereMaterial = new THREE.MeshBasicMaterial({
 
 });
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-sphere.position.set(20, 20, 20);
+sphere.position.set(20, 70, 20);
 
 //create mesh for soccer ball here
 //const sphereGeometery ...
@@ -60,8 +60,13 @@ soccerBall.position.set(1,1,1);
 
 const playerGeometry = new THREE.ConeGeometry(1, 1, 5);
 const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
+
+//declare the first blue mesh to set the model for a 
 const blueMesh = new THREE.Mesh(playerGeometry,playerMaterial);
 blueMesh.position.set(1,1,1)
+
+//rotate
+blueMesh.rotation.x = Math.PI / 2;
 
 // cloning the player mesh 
 var blueTwo = blueMesh.clone();
@@ -71,16 +76,16 @@ var blueThree = blueTwo.clone();
 blueThree.position.set(-10,10,1)
 
 //create  One
-const goalGeometery = new THREE.BoxGeometry(5,6,10)
-const goalMaterial = new THREE.MeshBasicMaterial({color: 0x800000 })
+const goalGeometery = new THREE.BoxGeometry(20,10,10)
+const goalMaterial = new THREE.MeshBasicMaterial({color: 0x808080})
 
 
 const goalMeshOne = new THREE.Mesh(goalGeometery, goalMaterial)
-goalMeshOne.position.set(1,50,1);
+goalMeshOne.position.set(1,45,1);
 
 //create goal-net Two
 var goalMeshTwo = goalMeshOne.clone();
-goalMeshTwo.position.set(-5,-5,1);
+goalMeshTwo.position.set(1,-45,1);
 
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 0.9)
