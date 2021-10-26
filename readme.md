@@ -46,5 +46,9 @@ npm run test
 ```
 
 
+## Resources:
+- https://threejsfundamentals.org/
+- https://threejs.org/docs
+
 - Credit to Bruno Simon and contributors for the three.js starter code found here:
 https://github.com/designcourse/threejs-webpack-starter

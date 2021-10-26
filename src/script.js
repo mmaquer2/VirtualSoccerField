@@ -30,7 +30,7 @@ const textureImgage = loader.load("soccer.png")
 
 
 
-const geometry = new THREE.PlaneBufferGeometry(70, 40, 40, 30);
+const geometry = new THREE.PlaneBufferGeometry(70, 80, 40, 70);
 const material = new THREE.MeshBasicMaterial({
   color: "green",
   //insert the texture map for the field color
@@ -42,7 +42,7 @@ const fieldMesh = new THREE.Mesh(geometry, material);
 const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
 const sphereMaterial = new THREE.MeshBasicMaterial({ 
   color: 0xffff00,
-  
+
   //soccer ball material here
   //map: "soccer_ball.png"
 
@@ -58,10 +58,11 @@ const soccerBall = new THREE.Mesh(ballGeometry, ballMaterial);
 soccerBall.position.set(1,1,1);
 
 //create a player mesh
-const playerGeometery = new THREE.SphereGeometry(1, 5, 5);
+
+const playerGeometry = new THREE.ConeGeometry(1, 1, 5);
 const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
-const blueMesh = new THREE.Mesh(playerGeometery,playerMaterial);
-blueMesh.position.set(1,5,1)
+const blueMesh = new THREE.Mesh(playerGeometry,playerMaterial);
+blueMesh.position.set(1,1,1)
 
 // cloning the player mesh 
 var blueTwo = blueMesh.clone();
@@ -70,10 +71,18 @@ blueTwo.position.set(-5,10,1)
 var blueThree = blueTwo.clone();
 blueThree.position.set(-10,10,1)
 
-//Goal/net One
+//Goal-net One
+const goalGeometery = new THREE.BoxGeometry(5,6,10)
+const goalMaterial = new THREE.MeshBasicMaterial({color: 0x800000 })
+const goalMeshOne = new THREE.Mesh(goalGeometery, goalMaterial)
+goalMeshOne.position.set(1,50,1);
 
+//Goal-net Two
+var goalMeshTwo = goalMeshOne.clone();
+goalMeshTwo.position.set(-5,-5,1);
 
-//Goal/net Two
+scene.add(goalMeshOne);
+scene.add(goalMeshTwo);
 
 
 // Lights
