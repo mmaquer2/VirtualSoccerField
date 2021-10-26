@@ -5,8 +5,16 @@ import * as Field from '../Include/FieldState'
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { DragControls } from 'three/examples/jsm/controls/DragControls.js'
+
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+
+
 import * as dat from 'dat.gui'
+
+
+//list of our object meshes
+var objects = []
 
 
 // Debug gui handler
@@ -27,7 +35,7 @@ const loader = new THREE.TextureLoader();
 //load the field texture 
 const textureImgage = loader.load("soccer.png")
 
-
+//insert HTML Element to describe keyboard commands/instructions 
 
 const geometry = new THREE.PlaneBufferGeometry(70, 80, 40, 70);
 const material = new THREE.MeshBasicMaterial({
@@ -56,8 +64,10 @@ const ballMaterial = new THREE.MeshBasicMaterial({color: 0xFFFFFF });
 const soccerBall = new THREE.Mesh(ballGeometry, ballMaterial);
 soccerBall.position.set(1,1,1);
 
-//create a player mesh
+//insert ball into objects list
+objects.push(soccerBall)
 
+//create a player mesh
 const playerGeometry = new THREE.ConeGeometry(1, 1, 5);
 const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
 
@@ -74,6 +84,11 @@ blueTwo.position.set(-5,10,1)
 
 var blueThree = blueTwo.clone();
 blueThree.position.set(-10,10,1)
+
+//insert players into objects list
+objects.push(blueMesh)
+objects.push(blueTwo)
+objects.push(blueTwo)
 
 //create  One
 const goalGeometery = new THREE.BoxGeometry(20,10,10)
@@ -140,22 +155,19 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1))
 //set the background color of our renderer 
 renderer.setClearColor(0xffff, 1)
 
+//insert a renderer element into the DOM
 document.body.appendChild( renderer.domElement );
 
 // Controls for the orbital view 
-const controls = new OrbitControls(camera, renderer.domElement )
+const orbitControls = new OrbitControls(camera, renderer.domElement )
 
-controls.keys = {
-	LEFT: 'ArrowLeft', //left arrow
-	UP: 'ArrowUp', // up arrow
-	RIGHT: 'ArrowRight', // right arrow
-	BOTTOM: 'ArrowDown' // down arrow
-}
+// enable drag controls for all 3d objects (meshes)
+const dragControls = new DragControls( objects, camera, renderer.domElement );
+dragControls.addEventListener( 'dragstart', function () { orbitControls.enabled = false; } );
+dragControls.addEventListener( 'dragend', function () { orbitControls.enabled = true; } );
 
 
-//set a renderer dom element for draggable objects 
-//document.body.appendChild(renderer.domElement)
-
+  
 //declare a clock to animate our scene
 const clock = new THREE.Clock()
 
@@ -286,19 +298,6 @@ const red_button = document.querySelector('#red_menu');
         }
       }
     
-
-
-//controls for soccer ball
-//const dragControls = new DragControls(soccerBall, camera, renderer.domElement)
-
-// controls.addEventListener('dragstart', function (event) {
-//     event.object.material.opacity = 0.33
-// })
-// controls.addEventListener('dragend', function (event) {
-//     event.object.material.opacity = 1
-// })
-
-
 //this is the event loop
 const tick = () => {
     document.addEventListener("keydown", onDocumentKeyDown, false);
@@ -320,7 +319,7 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls
-    controls.update()
+   orbitControls.update()
 
     //test to get/ change the postion of the soccer ball
     var x = soccerBall.position.x

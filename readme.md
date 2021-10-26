@@ -27,15 +27,24 @@ npm run dev
 
 ## How to use:
 
-- upon using the "npm run dev" command the program will launch on your defualt browser
-- the teams (red and blue) will be loaded onto the field with a default setting of a 4-4-2 formation, with the ball placed in the center of the field
+- To open the program:
+    - on the command line inside the project repo run the "npm run dev" command, the program will launch in your defualt browser
+    - the teams (red and blue) will be loaded onto the field with a default setting of a 4-4-2 formation, with the ball placed in the center of the field
     - from this default setting the team formations can be changed and players be dragged around as desired 
-- to change formation of a team, or add/remove players, click on the dropdown menus of the team as desired
 
-- changing camera views
+- change formations,
+    - to change formation of a team, or add/remove players, click on the dropdown menus of the team as desired
+
+- navigation,
+    - use your mouse to move around the field and zoom in and out accordingly
+
+- moving objects,
+    - you can click and drag objects with your mouse cursor and move them around the field 
+
+- changing camera views,
     - To change views from for corner kicks, free kicks, throw ins, press "c" on your keyboard or default I/O device 
 
-- Reset Board
+- Reset Board,
     - To reset the field to its default settings, press the escape key on your keyboard or default I/O device
 
 
