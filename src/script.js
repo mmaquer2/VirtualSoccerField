@@ -9,7 +9,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import * as dat from 'dat.gui'
 
 
-
 // Debug gui handler
 const gui = new dat.GUI()
 
@@ -71,19 +70,17 @@ blueTwo.position.set(-5,10,1)
 var blueThree = blueTwo.clone();
 blueThree.position.set(-10,10,1)
 
-//Goal-net One
+//create  One
 const goalGeometery = new THREE.BoxGeometry(5,6,10)
 const goalMaterial = new THREE.MeshBasicMaterial({color: 0x800000 })
+
+
 const goalMeshOne = new THREE.Mesh(goalGeometery, goalMaterial)
 goalMeshOne.position.set(1,50,1);
 
-//Goal-net Two
+//create goal-net Two
 var goalMeshTwo = goalMeshOne.clone();
 goalMeshTwo.position.set(-5,-5,1);
-
-scene.add(goalMeshOne);
-scene.add(goalMeshTwo);
-
 
 // Lights
 const pointLight = new THREE.PointLight(0xffffff, 0.9)
@@ -118,7 +115,7 @@ window.addEventListener('resize', () => {
 
 
 // Base camera
-const camera = new THREE.PerspectiveCamera(90, sizes.width / sizes.height, 0.1, 40)
+const camera = new THREE.PerspectiveCamera(90, sizes.width / sizes.height, 1, 1000)
 camera.position.x = 0
 camera.position.y = -20
 camera.position.z = 10
@@ -151,7 +148,6 @@ controls.keys = {
 }
 
 
-
 //set a renderer dom element for draggable objects 
 //document.body.appendChild(renderer.domElement)
 
@@ -163,8 +159,10 @@ var cameraCounter = 0
 function rotateCamera() {
 
   if(cameraCounter == 0) {
-    camera.position.x = 1;
-    camera.position.y = 1;
+    camera.position.x = 0
+   camera.position.y = -20
+   camera.position.z = 20  
+  
     cameraCounter = cameraCounter + 1;
     return;
 
@@ -172,24 +170,26 @@ function rotateCamera() {
   
   if(cameraCounter == 1) {
    // alert("second camera view")
-    camera.position.x = 5;
-    camera.position.y = 5;
+   camera.position.x = 0
+   camera.position.y = -20
+   camera.position.z = 10
     ++cameraCounter;
     return;
   }
    
   if(cameraCounter == 2) {
     //alert("3rd camera view")
-    camera.position.x = -10;
-    camera.position.y = -10;
+    camera.position.x = 0
+    camera.position.y = -20
+    camera.position.z = 10
     ++cameraCounter;
     return;
   }
 
   if(cameraCounter == 3) {
-    //alert("3rd camera view")
-    camera.position.x = -50;
-    camera.position.y = -10;
+    camera.position.x = 0
+    camera.position.y = -40
+    camera.position.z = 10
 
     //reset the camera back to the original position
     cameraCounter = 0;
@@ -207,13 +207,12 @@ function onDocumentKeyDown(event) {
    
     //keypress "R" to open red team menu
     if(keyCode == 82) {
-
+      document.getElementById("red_team").classList.toggle("show");
     }
 
     //keypress "B" to open blue team menu
     if(keyCode == 66) {
-      
-
+      document.getElementById("blue_team").classList.toggle("show");
     }
 
     //keypress "C" rotate camera position
@@ -235,8 +234,7 @@ const myField = new Field();
 myField.initField();
 
 
-
-//buton handler for the red team menu
+//buton handler for the blue team menu
 const blue_button = document.querySelector('#blue_menu');
     //display blue team menu when button is clicked
     blue_button.addEventListener('click', () => {
@@ -309,12 +307,15 @@ const tick = () => {
     scene.add(blueMesh)
     scene.add(blueTwo)
     scene.add(blueThree);
+
+    //insert goals onto the scene
+    scene.add(goalMeshOne);
+    scene.add(goalMeshTwo);
  
     const elapsedTime = clock.getElapsedTime()
 
     // Update Orbital Controls
     controls.update()
-
 
     //test to get/ change the postion of the soccer ball
     var x = soccerBall.position.x

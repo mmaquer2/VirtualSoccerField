@@ -7,9 +7,9 @@
     - Can create players with the drop down menu and assign them specific teams, and move them around the field, change formations
     - Can drag players and soccer ball around the field 
 
-- Features in Progress:
+- Features in Development:
     - Set Plays (Corner Kicks, free kicks, throw ins)
-    - Save field state
+    - Save field state and plays
     - Player routes and movement
 
 ## Setup:
@@ -33,7 +33,10 @@ npm run dev
 - to change formation of a team, or add/remove players, click on the dropdown menus of the team as desired
 
 - changing camera views
-    - to change views from for corner kicks, free kicks, throw ins, click on the camera drop down menu and select accordingly
+    - To change views from for corner kicks, free kicks, throw ins, press "c" on your keyboard or default I/O device 
+
+- Reset Board
+    - To reset the field to its default settings, press the escape key on your keyboard or default I/O device
 
 
 ## Testing:
@@ -44,7 +47,6 @@ npm run dev
 npm run test
 
 ```
-
 
 ## Resources:
 - https://threejsfundamentals.org/
