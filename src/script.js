@@ -27,21 +27,15 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 //create our mesh Texture Loaders
-const loader = new THREE.TextureLoader();
+const loader = new THREE.TextureLoader()
 
-//load the field texture 
-//const fieldTexture = loader.load('/random_map_three.jpg')
 
-//load the field texture 
-const textureImgage = loader.load("soccer.png")
-
-//insert HTML Element to describe keyboard commands/instructions 
-
+//create the mesh for the soccer field
+//**note** all texture images must be kept in the /static directory
 const geometry = new THREE.PlaneBufferGeometry(70, 80, 40, 70);
-const material = new THREE.MeshBasicMaterial({
+const material = new THREE.MeshStandardMaterial({
   color: "green",
-  //insert the texture map for the field color
-  //map: textureImgage
+  map: loader.load("/soccer.png")
 });
 const fieldMesh = new THREE.Mesh(geometry, material);
 
@@ -191,7 +185,7 @@ var goalMeshTwo = goalMeshOne.clone();
 goalMeshTwo.position.set(1,-45,1);
 
 // Create Lights
-const pointLight = new THREE.PointLight(0xffffff, 0.9)
+const pointLight = new THREE.PointLight(0xffffff, 4)
 pointLight.position.x = 2
 pointLight.position.y = 3
 pointLight.position.z = 4
