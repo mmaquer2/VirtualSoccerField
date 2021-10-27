@@ -68,41 +68,129 @@ soccerBall.position.set(1,1,1);
 objects.push(soccerBall)
 
 //create a player mesh
-const playerGeometry = new THREE.ConeGeometry(1, 1, 5);
-const playerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
+const playerGeometry = new THREE.ConeGeometry(1, 2, 5);
+const bluePlayerMaterial = new THREE.MeshBasicMaterial({color: 0x0000FF });
 
 //declare the first blue mesh to set the model for a 
-const blueMesh = new THREE.Mesh(playerGeometry,playerMaterial);
-blueMesh.position.set(1,1,1)
+const blueMesh = new THREE.Mesh(playerGeometry,bluePlayerMaterial);
+blueMesh.position.set(1,10,1)
 
 //rotate
 blueMesh.rotation.x = Math.PI / 2;
 
 // cloning the player mesh 
 var blueTwo = blueMesh.clone();
-blueTwo.position.set(-5,10,1)
+blueTwo.position.set(-10,10,1)
 
 var blueThree = blueTwo.clone();
-blueThree.position.set(-10,10,1)
+blueThree.position.set(10,10,1)
 
-//insert players into objects list
+var blueFour = blueTwo.clone();
+blueThree.position.set(10,10,1)
+
+var blueFive = blueTwo.clone();
+blueFive.position.set(10,20,1)
+
+var blueSix = blueTwo.clone();
+blueSix.position.set(10,15,1)
+
+var blueSeven = blueTwo.clone();
+blueSeven.position.set(5,10,1)
+
+var blueEight = blueTwo.clone();
+blueEight.position.set(-10,5,1)
+
+var blueNine = blueTwo.clone();
+blueNine.position.set(5,5,1)
+
+var blueTen = blueTwo.clone();
+blueTen.position.set(5,3,1)
+
+var blueEleven = blueTwo.clone();
+blueEleven.position.set(10,5,1)
+
+//insert blue players into objects list
 objects.push(blueMesh)
 objects.push(blueTwo)
-objects.push(blueTwo)
+objects.push(blueThree)
+objects.push(blueFour)
+objects.push(blueFive)
+objects.push(blueSix)
+objects.push(blueSeven)
+objects.push(blueEight)
+objects.push(blueNine)
+objects.push(blueTen)
+objects.push(blueEleven)
 
-//create  One
+
+//
+//Create the red team players
+//
+const redPlayerMaterial = new THREE.MeshBasicMaterial({color: 0xff0000 });
+
+//declare the first blue mesh to set the model for a 
+const redMesh = new THREE.Mesh(playerGeometry,redPlayerMaterial);
+redMesh.position.set(1,-10,1)
+
+redMesh.rotation.x = Math.PI / 2;
+
+var redTwo = redMesh.clone();
+redTwo.position.set(-10,-10,1)
+
+var redThree = redMesh.clone();
+redThree.position.set(10,-10,1)
+////////////////////////////////
+
+var redFour = redMesh.clone();
+redFour.position.set(-10,-20,1)
+
+var redFive = redMesh.clone();
+redFive.position.set(1,-20,1)
+
+var redSix = redMesh.clone();
+redSix.position.set(20,-20,1)
+
+var redSeven = redMesh.clone();
+redSeven.position.set(-10,-10,1)
+
+var redEight = redMesh.clone();
+redEight.position.set(-10,-10,1)
+
+var redNine = redMesh.clone();
+redNine.position.set(-10,-10,1)
+
+var redTen = redMesh.clone();
+redTen.position.set(-10,-10,1)
+
+var redEleven = redMesh.clone();
+redEleven.position.set(-10,-10,1)
+
+//insert red team players into object list 
+objects.push(redMesh)
+objects.push(redTwo)
+objects.push(redThree)
+objects.push(redFour)
+objects.push(redFive)
+objects.push(redSix)
+objects.push(redSeven)
+objects.push(redEight)
+objects.push(redNine)
+objects.push(redTen)
+objects.push(redEleven)
+
+
+//create Goal One
 const goalGeometery = new THREE.BoxGeometry(20,10,10)
 const goalMaterial = new THREE.MeshBasicMaterial({color: 0x808080})
-
 
 const goalMeshOne = new THREE.Mesh(goalGeometery, goalMaterial)
 goalMeshOne.position.set(1,45,1);
 
-//create goal-net Two
+//create Goal Two
 var goalMeshTwo = goalMeshOne.clone();
 goalMeshTwo.position.set(1,-45,1);
 
-// Lights
+// Create Lights
 const pointLight = new THREE.PointLight(0xffffff, 0.9)
 pointLight.position.x = 2
 pointLight.position.y = 3
@@ -163,8 +251,10 @@ const orbitControls = new OrbitControls(camera, renderer.domElement )
 
 // enable drag controls for all 3d objects (meshes)
 const dragControls = new DragControls( objects, camera, renderer.domElement );
-dragControls.addEventListener( 'dragstart', function () { orbitControls.enabled = false; } );
-dragControls.addEventListener( 'dragend', function () { orbitControls.enabled = true; } );
+dragControls.addEventListener( 'dragstart', function (event) { orbitControls.enabled = false; } );
+dragControls.addEventListener( 'drag', function (event) {  event.object.position.z = 1; } );
+
+dragControls.addEventListener( 'dragend', function (event) { orbitControls.enabled = true; } );
 
 
   
@@ -307,10 +397,31 @@ const tick = () => {
     scene.add(fieldMesh);
     scene.add(soccerBall)
 
-    //test insert player to scene
+    //insert blue players to scene
     scene.add(blueMesh)
     scene.add(blueTwo)
     scene.add(blueThree);
+    scene.add(blueFour)
+    scene.add(blueFive)
+    scene.add(blueSix)
+    scene.add(blueSeven)
+    scene.add(blueEight)
+    scene.add(blueNine)
+    scene.add(blueTen)
+    scene.add(blueEleven)
+
+    //insert red team onto scene
+    scene.add(redMesh)
+    scene.add(redTwo)
+    scene.add(redThree)
+    scene.add(redFour)
+    scene.add(redFive)
+    scene.add(redSix)
+    scene.add(redSeven)
+    scene.add(redEight)
+    scene.add(redNine)
+    scene.add(redTen)
+    scene.add(redEleven)
 
     //insert goals onto the scene
     scene.add(goalMeshOne);
@@ -320,15 +431,6 @@ const tick = () => {
 
     // Update Orbital Controls
    orbitControls.update()
-
-    //test to get/ change the postion of the soccer ball
-    var x = soccerBall.position.x
-    var y = soccerBall.position.y;
-    var z = soccerBall.position.z;
-
-    soccerBall.position.x = 10;
-    soccerBall.position.y = 20
-    //soccerBall.position.z;
 
     //render scene and camera
     renderer.render(scene, camera)
