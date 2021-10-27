@@ -80,22 +80,24 @@ var blueThree = blueTwo.clone();
 blueThree.position.set(10,10,1)
 
 var blueFour = blueTwo.clone();
-blueThree.position.set(10,10,1)
+blueThree.position.set(10,-10,1)
 
+////////////////////////////////
 var blueFive = blueTwo.clone();
-blueFive.position.set(10,20,1)
+blueFive.position.set(-20,20,1)
 
 var blueSix = blueTwo.clone();
-blueSix.position.set(10,15,1)
+blueSix.position.set(-20,15,1)
 
 var blueSeven = blueTwo.clone();
-blueSeven.position.set(5,10,1)
+blueSeven.position.set(-20,20,1)
+//////////////////////////////
 
 var blueEight = blueTwo.clone();
-blueEight.position.set(-10,5,1)
+blueEight.position.set(-30,20,1)
 
 var blueNine = blueTwo.clone();
-blueNine.position.set(5,5,1)
+blueNine.position.set(-30,10,1)
 
 var blueTen = blueTwo.clone();
 blueTen.position.set(5,3,1)
@@ -184,15 +186,9 @@ goalMeshOne.position.set(1,45,1);
 var goalMeshTwo = goalMeshOne.clone();
 goalMeshTwo.position.set(1,-45,1);
 
-// Create Lights
-const pointLight = new THREE.PointLight(0xffffff, 4)
-pointLight.position.x = 2
-pointLight.position.y = 3
-pointLight.position.z = 4
-scene.add(pointLight)
 
 //soft white light from the sun mesh object
-const amblight = new THREE.AmbientLight(0x404040); 
+const amblight = new THREE.AmbientLight(0x404040,8); 
 scene.add(amblight);
 
 //set size of the window viewport
