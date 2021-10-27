@@ -1,6 +1,7 @@
 # Virtual Soccer Field
 
-
+![Image of program]
+(https://github.com/mmaquer2/virtual_soccer_field/blob/main/images/sample.jpg)
 
 - Virtual Soccer Field Model built with Three.js
 
