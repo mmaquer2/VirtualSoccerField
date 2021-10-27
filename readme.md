@@ -2,17 +2,17 @@
 
 ![Image of program](https://github.com/mmaquer2/virtual_soccer_field/blob/main/images/complete_field.png)
 
-- Virtual Soccer Field Model built with Three.js
+- Virtual Soccer Field Model built with Three.js, meant to be used as a digital white board to help coach and train soccer teams
+
 
 - Features: 
-    - Virtual soccer field designed to be a coach's and athlete tool
-    - Can create players with the drop down menu and assign them specific teams, and move them around the field, change formations
     - Can drag players and soccer ball around the field 
 
 - Features in Development:
     - Set Plays (Corner Kicks, free kicks, throw ins)
     - Save field state and plays
     - Player routes and movement
+    - drag players to form a free kick "wall" 
 
 ## Setup:
 ``` bash
@@ -65,3 +65,4 @@ npm run test
 
 - Credit to Bruno Simon and contributors for the three.js starter code found here:
 https://github.com/designcourse/threejs-webpack-starter
+
