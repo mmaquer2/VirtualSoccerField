@@ -1,0 +1,116 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body
+{
+    height: 100vh;
+    font-family: 'Poppins';
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+}
+
+  #camera_menu {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
+  #blue_menu {
+    position: absolute;
+    left: 100px;
+    top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
+  #red_menu {
+    position: absolute;
+    left: 200px;
+    top: 10px;
+    padding: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+  }
+
+
+ /* camera  menu content, hidden by default */
+
+
+ /* blue team dropdown menu content, hidden by default */
+.blue_content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  /* blue team dropdown menu content, when not hidden*/
+  .blue_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+   /* blue team menu content */
+  .blue_content a:hover {background-color: #ddd}
+  
+  /* Show the dropdown menu */
+  .show {display:block;}
+
+
+
+
+/* red team dropdown menu content, hidden by default */
+
+ /* red team dropdown menu content, hidden by default */
+.red_content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  /* red team dropdown menu content, when not hidden*/
+  .red_content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+   /* red team menu content */
+  .red_content a:hover {background-color: #ddd}
+
+   /* Show the dropdown menu */
+   .show {display:block;}
+
+/*# sourceMappingURL=main.css.map*/

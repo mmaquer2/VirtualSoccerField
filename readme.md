@@ -59,6 +59,16 @@ npm run test
 
 ```
 
+# Deploy
+
+```bash
+
+# deploy to a static site with surge. sh, npm cli will cd into dist build dir and launch app to the CNAME within the cname file
+
+npm run deploy
+
+```
+
 ## Resources:
 - https://threejsfundamentals.org/
 - https://threejs.org/docs
