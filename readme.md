@@ -4,6 +4,7 @@
 
 - Virtual Soccer Field Model built with Three.js, meant to be used as a digital white board to help coach and train soccer teams
 
+- live demo:  https://virt_soccer_field.surge.sh/ 
 
 - Features: 
     - Can drag players and soccer ball around the field 
